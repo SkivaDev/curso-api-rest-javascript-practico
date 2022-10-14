@@ -29,6 +29,8 @@ function navigator() {
   } else {
     console.log("ERROR 404");
   }
+  // Scrolea al inicio de la pagina
+  window.scrollTo(0, 0);
 }
 
 const homePage = () => {
