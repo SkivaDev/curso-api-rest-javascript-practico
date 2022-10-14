@@ -45,8 +45,13 @@ const homePage = () => {
   genericSection.classList.add('inactive');
   movieDetailSection.classList.add('inactive');
 
-  getTrendingMoviesPreview();
-  getCategoriesPreview();
+
+  // crea un array con los hijos para ver si tiene o no hijos traidos por el fetch
+  const childrenCategoriesPreview = Array.from(categoriesPreviewList.children);
+  if(!childrenCategoriesPreview.length){
+    getTrendingMoviesPreview();
+    getCategoriesPreview();
+  }
 }
 const trendsPage = () => {
   headerSection.classList.remove('header-container--long');
@@ -103,4 +108,17 @@ const categoriesPage = () => {
   categoriesPreviewSection.classList.add('inactive');
   genericSection.classList.remove('inactive');
   movieDetailSection.classList.add('inactive');
+
+  // ['#category', 'id-name']
+  const [_, categoryData] = location.hash.split('=');
+  const [categoryId, categoryName] = categoryData.split('-');
+
+  headerCategoryTitle.innerHTML = categoryName;
+
+  getMoviesByCategory(categoryId);
+  
+  // const childrenMoviesByCategory= Array.from(genericSection.children);
+  // if(!childrenMoviesByCategory.length){
+  //   getMoviesByCategory(categoryId);
+  // }
 }
