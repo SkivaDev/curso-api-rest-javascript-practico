@@ -197,6 +197,21 @@ button {
   padding-left: 24px;
   padding-bottom: 16px;
 }
+.trendingPreview-movieList::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;  
+}
+.trendingPreview-movieList::-webkit-scrollbar-thumb {
+  background: var(--purple-dark-1);
+  border-radius: 4px;
+}
+
+
+
+
+
+
+
 
 .trendingPreview-movieList .movie-container {
   display: inline-block;
