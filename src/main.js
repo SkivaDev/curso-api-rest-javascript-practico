@@ -121,6 +121,16 @@ async function getDetailsMovie(movieId) {
   movieDetailDescription.textContent = movie.overview;
   movieDetailScore.textContent = movie.vote_average;
 
-  genericSection.innerHTML = ""; 
   createCategories(movie.genres, movieDetailCategoriesList);
+
+  getRelatedMovies(movieId);
+}
+
+async function getRelatedMovies(movieId) {
+  const { data } = await api(`movie/${movieId}/recommendations`);
+  const relatedMovies = data.results;
+
+  relatedMoviesContainer.scrollTo(0, 0);
+  relatedMoviesContainer.innerHTML = "";
+  createMovies(relatedMovies, relatedMoviesContainer);
 }
