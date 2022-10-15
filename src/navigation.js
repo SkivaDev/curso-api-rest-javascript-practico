@@ -102,7 +102,13 @@ const movieDetailsPage = () => {
   categoriesPreviewSection.classList.add('inactive');
   genericSection.classList.add('inactive');
   movieDetailSection.classList.remove('inactive');
+
+  const [_, movieId] = location.hash.split('=');
+  
+  getDetailsMovie(movieId);
 }
+
+
 const categoriesPage = () => {
   headerSection.classList.remove('header-container--long');
   headerSection.style.background = '';
