@@ -80,3 +80,26 @@ async function getMoviesByCategory(id) {
   genericSection.innerHTML = ""; 
   createMovies(movies, genericSection);
 }
+
+async function getMoviesBySearch(query) {
+  const { data } = await api("/search/movie", {
+    params: {
+      query: query,
+    },
+  });
+  const movies = data.results;
+
+  genericSection.innerHTML = ""; 
+  createMovies(movies, genericSection);
+}
+
+async function getTrendingMovies() {
+  const { data } = await api("trending/movie/day");
+
+  console.log(data);
+
+  const movies = data.results;
+
+  genericSection.innerHTML = ""; 
+  createMovies(movies, genericSection);
+}
