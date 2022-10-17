@@ -38,7 +38,11 @@ function createMovies(movies, container, lazyLoad = false) {
       lazyLoad ? 'data-img' : 'src',
       'https://image.tmdb.org/t/p/w300' + movie.poster_path,
     );
-    
+    movieImg.addEventListener("error", () => {
+      movieContainer.style.display = "none";
+    })
+
+
     if(lazyLoad) lazyLoader.observe(movieImg);
 
     movieContainer.appendChild(movieImg);
@@ -92,7 +96,7 @@ async function getMoviesByCategory(id) {
   });
   const movies = data.results;
 
-  createMovies(movies, genericSection);
+  createMovies(movies, genericSection, true);
 }
 
 async function getMoviesBySearch(query) {
@@ -103,14 +107,14 @@ async function getMoviesBySearch(query) {
   });
   const movies = data.results;
 
-  createMovies(movies, genericSection);
+  createMovies(movies, genericSection, true);
 }
 
 async function getTrendingMovies() {
   const { data } = await api('trending/movie/day');
   const movies = data.results;
 
-  createMovies(movies, genericSection);
+  createMovies(movies, genericSection, true);
 }
 
 async function getMovieById(id) {
