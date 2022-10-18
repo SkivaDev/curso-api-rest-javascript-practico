@@ -14,6 +14,9 @@ arrowBtn.addEventListener('click', () => {
 window.addEventListener('DOMContentLoaded', navigator, false);
 window.addEventListener('hashchange', navigator, false);
 
+
+
+
 function navigator() {
   console.log({ location });
   
