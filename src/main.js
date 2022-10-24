@@ -87,6 +87,7 @@ function createMovies(
     movieBtn.addEventListener('click', () => {
       movieBtn.classList.toggle('movie-btn--liked');
       likeMovie(movie);
+      getLikedMovies();
     });
 
     if (lazyLoad) {
